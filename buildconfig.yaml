@@ -29,9 +29,11 @@ spec:
         name: openvino/model_server:latest
       env:
       - name: ZOO_BASE
-        value: https://storage.openvinotoolkit.org/repositories/open_model_zoo/2021.3/models_bin/2
+        value: https://storage.openvinotoolkit.org/repositories/open_model_zoo/2021.3/models_bin
       - name: MODEL
         value: faster-rcnn-resnet101-coco-sparse-60-0001
+      - name: VERSION
+        value: 2
       - name: PRECISION
         value: FP16
 
