@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: ImageStream
+metadata:
+  name: ovms-resnet
+  labels:
+    application: ovms-resnet
+---
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: ovms-resnet
+spec:
+  triggers:
+    - type: "ConfigChange"
+  lookupPolicy:
+    local: true
+  output:
+    to:
+      kind: ImageStreamTag
+      name: ovms-resnet:local-build
+  source: 
+    git:
+      uri: https://github.com/mmgaggle/ovms-model
+  strategy:
+    dockerStrategy:
+      from:
+        kind: DockerImage
+        name: openvino/model_server:latest
